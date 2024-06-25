@@ -10,8 +10,23 @@ import './styles.css';
 function CheckoutExercise() {
   const [items, dispatch] = React.useReducer(
     reducer,
-    []
+    null
   );
+
+  // const [savedCart, setSavedCart] = React.useState([]);
+  React.useEffect(() => {
+    const savedCart = window.localStorage.getItem('saved-cart');
+    dispatch({
+      type: 'initialize',
+      items: savedCart === null ? [] : JSON.parse(savedCart)
+    })
+  }, [])
+
+  React.useEffect(() => {
+    if(items !== null){
+      window.localStorage.setItem('saved-cart', JSON.stringify(items));
+    }
+  })
 
   return (
     <>
@@ -24,6 +39,8 @@ function CheckoutExercise() {
               key={item.id}
               item={item}
               handleAddToCart={(item) => {
+                // setSavedCart([...savedCart, item]);
+                // window.localStorage.setItem('saved-cart', JSON.stringify(savedCart));
                 dispatch({
                   type: 'add-item',
                   item,
