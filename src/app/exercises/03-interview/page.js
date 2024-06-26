@@ -1,19 +1,22 @@
-'use client';
 import React from 'react';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
 
 import Interview from './Interview';
 import './styles.css';
 
 function InterviewExercise() {
-  const isDesktop = useMediaQuery({
-    query: '(min-width: 500px)',
-  });
+  React.useEffect(()=>{
+
+  })
+
+  // const isDesktop = useMediaQuery({
+  //   query: '(min-width: 500px)',
+  // });
 
   return (
     <main>
       <Interview />
-      {isDesktop && (
+      {/*{isDesktop && (*/}
         <aside>
           <img
             src="/gwen-artist.png"
@@ -29,7 +32,7 @@ function InterviewExercise() {
             worlds of video games.
           </p>
         </aside>
-      )}
+      {/*)}*/}
     </main>
   );
 }
